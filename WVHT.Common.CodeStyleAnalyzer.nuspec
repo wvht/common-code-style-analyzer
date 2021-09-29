@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+    <metadata>
+        <id>WVHT.Common.CodeStyleAnalyzer</id>
+        <version>1.1.0</version>
+        <description>Weaver Vale Housing Trust custom code style analysis rulesets and configuration.</description>
+        <authors>Weaver Vale Housing Trust</authors>
+        <dependencies>
+            <group targetFramework="netstandard2.0">
+                <dependency id="StyleCop.Analyzers" version="1.1.118" />
+            </group>
+        </dependencies>
+    </metadata>
+    <files>
+        <file src=".editorconfig" />
+        <file src="stylecop.json" />
+        <file src="WVHT.Common.CodeStyleAnalyzer.ruleset" />
+        <file src="WVHT.Common.CodeStyleAnalyzer.props" target="build" />
+    </files>
+</package>

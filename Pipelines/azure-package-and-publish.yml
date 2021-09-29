@@ -1,0 +1,26 @@
+trigger:
+
+  branches:
+    include:
+    - master
+
+steps:
+
+- checkout: self
+
+- task: NuGetCommand@2
+  displayName: "NuGet Pack"
+  inputs:
+    command: 'custom'
+    arguments: 'pack "$(Build.SourcesDirectory)/WVHT.Common.CodeStyleAnalyzer.nuspec" -NoDefaultExcludes -OutputDirectory "$(Build.ArtifactStagingDirectory)"'
+
+- task: NuGetCommand@2
+  displayName: 'NuGet Push'
+  inputs:
+    command: 'push'
+    feedsToUse: 'select'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+    nuGetFeedType: 'internal'
+    publishVstsFeed: '72d8ac8a-3931-4f72-9c8c-25b7491ba606/41a5b1ff-3694-4b1e-8cec-9a6e5b4d2aaf'
+    versioningScheme: 'off'
+    allowPackageConflicts: true
