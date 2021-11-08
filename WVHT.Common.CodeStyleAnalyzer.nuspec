@@ -2,9 +2,14 @@
 <package>
     <metadata>
         <id>WVHT.Common.CodeStyleAnalyzer</id>
-        <version>1.1.0</version>
+        <version>2.0.0</version>
+        <title>WVHT Common Package - Code Style Analyzer</title>
         <description>Weaver Vale Housing Trust custom code style analysis rulesets and configuration.</description>
         <authors>Weaver Vale Housing Trust</authors>
+        <license type="expression">GPL-3.0-only</license>
+        <projectUrl>https://github.com/wvht/common-code-style-analyzer</projectUrl>
+        <repository type="git" url="https://github.com/wvht/common-code-style-analyzer.git" branch="main" />
+        <tags>DotNetAnalyzers Roslyn Analyzer</tags>
         <dependencies>
             <group targetFramework="netstandard2.0">
                 <dependency id="StyleCop.Analyzers" version="1.1.118" />
