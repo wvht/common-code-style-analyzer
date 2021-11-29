@@ -2,7 +2,7 @@
 <package>
     <metadata>
         <id>WVHT.Common.CodeStyleAnalyzer</id>
-        <version>2.0.0</version>
+        <version>2.0.1</version>
         <title>WVHT Common Package - Code Style Analyzer</title>
         <description>Weaver Vale Housing Trust custom code style analysis rulesets and configuration.</description>
         <authors>Weaver Vale Housing Trust</authors>
