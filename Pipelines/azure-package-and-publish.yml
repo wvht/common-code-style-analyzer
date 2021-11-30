@@ -4,22 +4,28 @@ trigger:
     include:
     - main
 
-steps:
+stages:
 
-- checkout: self
+- stage: 'NuGet'
+  displayName: 'NuGet'
+  jobs:
 
-- task: NuGetCommand@2
-  displayName: "NuGet Pack"
-  inputs:
-    command: 'custom'
-    arguments: 'pack "$(Build.SourcesDirectory)/WVHT.Common.CodeStyleAnalyzer.nuspec" -NoDefaultExcludes -OutputDirectory "$(Build.ArtifactStagingDirectory)"'
+  - job: 'NuGet'
+    displayName: 'NuGet Pack & Push'
+    steps:
 
-- task: NuGetCommand@2
-  displayName: 'NuGet Push'
-  inputs:
-    command: 'push'
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
-    nuGetFeedType: 'external'
-    publishFeedCredentials: 'NuGet'
-    versioningScheme: 'off'
-    allowPackageConflicts: true
+    - task: NuGetCommand@2
+      displayName: "NuGet Pack"
+      inputs:
+        command: 'custom'
+        arguments: 'pack "$(Build.SourcesDirectory)/WVHT.Common.CodeStyleAnalyzer.nuspec" -NoDefaultExcludes -OutputDirectory "$(Build.ArtifactStagingDirectory)"'
+
+    - task: NuGetCommand@2
+      displayName: 'NuGet Push'
+      inputs:
+        command: 'push'
+        packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+        nuGetFeedType: 'external'
+        publishFeedCredentials: 'NuGet'
+        versioningScheme: 'off'
+        allowPackageConflicts: true
